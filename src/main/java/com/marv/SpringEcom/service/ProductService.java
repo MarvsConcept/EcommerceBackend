@@ -24,7 +24,7 @@ public class ProductService {
         return productRepo.findById(id).get();
     }
 
-    public Product addProduct(Product product, MultipartFile image) throws IOException {
+    public Product addorUpdateProduct(Product product, MultipartFile image) throws IOException {
 
         product.setImageName(image.getOriginalFilename());
         product.setImageType(image.getContentType());
@@ -32,11 +32,11 @@ public class ProductService {
         return productRepo.save(product);
     }
 
-    public Product updateProduct(Product product, MultipartFile image) throws IOException {
-
-        product.setImageName(image.getOriginalFilename());
-        product.setImageType(image.getContentType());
-        product.setImageData(image.getBytes());
-        return productRepo.save(product);
-    }
+//    public Product updateProduct(Product product, MultipartFile image) throws IOException {
+//
+//        product.setImageName(image.getOriginalFilename());
+//        product.setImageType(image.getContentType());
+//        product.setImageData(image.getBytes());
+//        return productRepo.save(product);
+//    }
 }

@@ -49,7 +49,7 @@ public class ProductController {
 
         Product savedProduct = null;
         try {
-            savedProduct = productService.addProduct(product, imageFile);
+            savedProduct = productService.addorUpdateProduct(product, imageFile);
             return new ResponseEntity<>(savedProduct, HttpStatus.CREATED);
         } catch (IOException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
@@ -63,7 +63,7 @@ public class ProductController {
 
         Product updatedProduct = null;
         try {
-            updatedProduct = productService.updateProduct(product, imageFile);
+            updatedProduct = productService.addorUpdateProduct(product, imageFile);
             return new ResponseEntity<>("Updated", HttpStatus.OK);
         }
         catch (IOException e) {
