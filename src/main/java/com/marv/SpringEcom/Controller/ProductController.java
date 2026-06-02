@@ -60,7 +60,6 @@ public class ProductController {
     public ResponseEntity<String> updateProduct(@PathVariable int id,
                                                 @RequestPart Product product,
                                                 @RequestPart MultipartFile imageFile) {
-
         Product updatedProduct = null;
         try {
             updatedProduct = productService.addorUpdateProduct(product, imageFile);
@@ -71,6 +70,16 @@ public class ProductController {
         }
     }
 
+    @DeleteMapping("/product/{id}")
+    public ResponseEntity<String> deleteProduct(@PathVariable int id) {
+
+        Product product = productService.getProductById(id);
+        if (product != null) {
+            productService.deleteProduct(id);
+            return new ResponseEntity<>("Deleted", HttpStatus.OK);
+        } else
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
 
 
 }
