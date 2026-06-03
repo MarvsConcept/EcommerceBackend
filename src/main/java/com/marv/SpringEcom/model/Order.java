@@ -15,6 +15,7 @@ import java.util.List;
 public class Order {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(unique = true)
@@ -29,5 +30,5 @@ public class Order {
     private LocalDate orderDate;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
-    private List<OrderItem> orderItem;
+    private List<OrderItem> orderItems;
 }

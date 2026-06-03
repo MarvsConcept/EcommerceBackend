@@ -18,7 +18,7 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
-    @GetMapping("/orders/place")
+    @PostMapping("/orders/place")
     public ResponseEntity<OrderResponse> placeOrder(@RequestBody OrderRequest orderRequest) {
 
         OrderResponse orderResponse = orderService.placeOrder(orderRequest);
@@ -27,8 +27,8 @@ public class OrderController {
     }
 
     @GetMapping("/orders")
-    public ResponseEntity<List<OrderResponse>> getAllOrder() {
-        List<OrderResponse> responses = orderService.getAllOrderResponses();
-        return new ResponseEntity<>(responses, HttpStatus.OK);
+    public ResponseEntity<List<OrderResponse>> getAllOrders() {
+        List<OrderResponse> orderResponseList = orderService.getAllOrderResponses();
+        return new ResponseEntity<>(orderResponseList, HttpStatus.OK);
     }
 }
